@@ -408,7 +408,7 @@ GameObject:
   - component: {fileID: 2858414477466319635}
   - component: {fileID: 3802539122779689485}
   m_Layer: 5
-  m_Name: NameText
+  m_Name: PearlGemImage
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -840,8 +840,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 0}
-  m_AnchoredPosition: {x: 0, y: 150}
-  m_SizeDelta: {x: -200, y: 1000}
+  m_AnchoredPosition: {x: 0, y: 500}
+  m_SizeDelta: {x: -200, y: 600}
   m_Pivot: {x: 0.5, y: 0}
 --- !u!1 &3455785682460067697
 GameObject:
@@ -855,7 +855,7 @@ GameObject:
   - component: {fileID: 555129622571101059}
   - component: {fileID: 403344031830636055}
   m_Layer: 5
-  m_Name: Text (TMP)
+  m_Name: StartBtnText
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1005,7 +1005,7 @@ GameObject:
   - component: {fileID: 8576562586152139748}
   - component: {fileID: 7374474359463201262}
   m_Layer: 5
-  m_Name: Text (TMP)
+  m_Name: QuitBtnText
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1028,7 +1028,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: 100}
+  m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 400, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!224 &5697036441883078504
@@ -1103,6 +1103,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 7331499388520228719}
+  - component: {fileID: 7331499388520228720}
   m_Layer: 5
   m_Name: MainMenu
   m_TagString: Untagged
@@ -1197,6 +1198,20 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &7331499388520228720
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5848625070451187753}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d286bb58e1b00d24dacb11bbdb932fc7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  startButton: {fileID: 5765709930951677224}
+  quitButton: {fileID: 1003417709795366233}
 --- !u!114 &7374474359463201262
 MonoBehaviour:
   m_ObjectHideFlags: 0

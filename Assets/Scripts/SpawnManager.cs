@@ -113,13 +113,4 @@ public class SpawnManager : Singleton<SpawnManager>
         return currentColors[colorID];
     }
 
-    public int GetZoneIndexForColor(BallColor color)
-    {
-        for (int i = 0; i < zoneColors.Length; i++)
-        {
-            if (zoneColors[i] == color)
-                return i;
-        }
-        return -1;
-    }
 }
