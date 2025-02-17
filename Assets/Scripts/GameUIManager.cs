@@ -9,7 +9,8 @@ using TMPro;
 public class GameUIManager : Singleton<GameUIManager>
 {
     public GameObject backGround;
-    public TextMeshPro gameOverText;
+    public GameObject gameOverTextHolder;
+    public TextMeshProUGUI gameOverText;
     public Button restartButton;
     public Button backButton;
 
@@ -44,8 +45,16 @@ public class GameUIManager : Singleton<GameUIManager>
 
     public void GameOver()
     {
-        Time.timeScale = 0;
-        //gameOverText.IsActive;
+        gameOverTextHolder.SetActive(true);
+
+        gameOverText.text = "You lose!";
+    }
+
+    public void WinGame()
+    {
+        gameOverTextHolder.SetActive(true);
+
+        gameOverText.text = "You win!";
     }
 
 }

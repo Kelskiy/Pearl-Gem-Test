@@ -2,35 +2,35 @@ using UnityEngine;
 
 public class Ballistics : MonoBehaviour
 {
-    private Rigidbody rb;
+    private Rigidbody playerRigidBody;
     public float forceMultiplier = 10f;  
     public float lifetime = 10f;       
 
     void Awake()
     {
-        rb = GetComponent<Rigidbody>();
-        if (rb == null)
+        playerRigidBody = GetComponent<Rigidbody>();
+        if (playerRigidBody == null)
         {
             Debug.LogError("Rigidbody not found on the ball object!");
         }
         // Gravity is disabled initially.
-        rb.useGravity = false;
+        playerRigidBody.useGravity = false;
     }
 
     // Method to launch the ball
     public void Shoot(Vector3 launchVector)
     {
-        if (rb == null)
+        if (playerRigidBody == null)
         {
             Debug.LogError("Rigidbody is null. Cannot shoot the ball.");
             return;
         }
 
-        rb.velocity = Vector3.zero;
+        playerRigidBody.velocity = Vector3.zero;
 
-        rb.AddForce(launchVector * forceMultiplier, ForceMode.Impulse);
+        playerRigidBody.AddForce(launchVector * forceMultiplier, ForceMode.Impulse);
 
-        rb.useGravity = true;
+        playerRigidBody.useGravity = true;
 
         Destroy(gameObject, lifetime);
     }

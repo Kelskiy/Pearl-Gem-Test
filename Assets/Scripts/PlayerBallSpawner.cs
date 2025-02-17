@@ -9,11 +9,6 @@ public class PlayerBallSpawner : MonoBehaviour
     private int currentBallCount;
     private GameObject currentBall;
 
-    public BallColor ballColor;
-
-
-    public float ballLifeTime = 5f;
-
     private Rigidbody currentBallRb;
 
     public GameObject CurrentBall
@@ -35,6 +30,7 @@ public class PlayerBallSpawner : MonoBehaviour
         if (currentBallCount == 0 && SpawnManager.Instance.currentBallColors.Count > 0)
         {
             GameManager.Instance.ChangedGameState(GameState.GameOver);
+            GameUIManager.Instance.GameOver();
             return;
         }
 
@@ -42,6 +38,7 @@ public class PlayerBallSpawner : MonoBehaviour
         if (SpawnManager.Instance.currentBallColors.Count == 0)
         {
             GameManager.Instance.ChangedGameState(GameState.GameOver);
+            GameUIManager.Instance.WinGame();
             return;
         }
 
@@ -58,9 +55,13 @@ public class PlayerBallSpawner : MonoBehaviour
             PlayerBall ballScript = currentBall.GetComponent<PlayerBall>();
             BallColor randomColor = SpawnManager.Instance.GetRandomColor();
             ballScript.SetBallColor(randomColor);
-
-            currentBallCount--;
-            GameUIManager.Instance.UpdateUI(currentBallCount);
         }
     }
+
+    public void ShootBall()
+    {
+        currentBallCount--;
+        GameUIManager.Instance.UpdateUI(currentBallCount);
+    }
 }
+

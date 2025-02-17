@@ -6,7 +6,6 @@ public class GameController : MonoBehaviour
     public Transform launchPoint;
     public float maxForce = 20f;
     public int trajectoryPoints = 50;
-    public float timeStep = 0.05f;
     public float timeToSpawnNextBall = 2f;
 
     public PlayerBallSpawner ballSpawner;
@@ -99,6 +98,8 @@ public class GameController : MonoBehaviour
                 ballSpawner.CurrentBall = null;
 
                 Invoke(nameof(SpawnNewBall), timeToSpawnNextBall);
+
+                ballSpawner.ShootBall();
             }
         }
     }

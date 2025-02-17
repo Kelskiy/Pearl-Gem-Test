@@ -7,7 +7,6 @@ public class SpawnManager : Singleton<SpawnManager>
     [Header("Planet settings")]
     public int totalBalls = 500;
     public float planetRadius = 5f;
-    public float ballScaleFactor = 0.2f;
     public int numberOfZones = 5;
 
     public BallContoller ballPrefab;
