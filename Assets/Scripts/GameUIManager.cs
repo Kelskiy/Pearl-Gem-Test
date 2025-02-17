@@ -6,12 +6,14 @@ using UnityEngine.SceneManagement;
 using TMPro;
 
 
-public class GameUIController : MonoBehaviour
+public class GameUIManager : Singleton<GameUIManager>
 {
     public GameObject backGround;
     public TextMeshPro gameOverText;
     public Button restartButton;
     public Button backButton;
+
+    public TextMeshProUGUI shotsRemainingText;
 
     void Start()
     {
@@ -26,6 +28,18 @@ public class GameUIController : MonoBehaviour
     public void RestartButton()
     {
         SceneManager.LoadScene("GameScene");
+    }
+
+    public void UpdateUI(int currentBallCount)
+    {
+        if (shotsRemainingText != null)
+        {
+            shotsRemainingText.text = "Shots: " + currentBallCount.ToString();
+        }
+        else
+        {
+            Debug.LogError("shotsText is NULL! Assign the UI text reference.");
+        }
     }
 
     public void GameOver()

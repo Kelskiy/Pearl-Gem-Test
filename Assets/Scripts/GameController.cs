@@ -4,10 +4,11 @@ using UnityEngine;
 public class GameController : MonoBehaviour
 {
     public Transform launchPoint;
-    public Rigidbody ballPrefab;
     public float maxForce = 20f;
     public int trajectoryPoints = 50;
     public float timeStep = 0.05f;
+    public float timeToSpawnNextBall = 2f;
+
     public PlayerBallSpawner ballSpawner;
     public TrajectoryPredictor trajectoryPredictor;
 
@@ -31,10 +32,21 @@ public class GameController : MonoBehaviour
 
         ballSpawner = FindObjectOfType<PlayerBallSpawner>();
         ballSpawner.SpawnBall();
+
+        GameManager.Instance.ChangedGameState(GameState.Gameplay);
     }
 
     void Update()
     {
+        if (GameManager.Instance.currentState == GameState.WaitingForStart || GameManager.Instance.currentState == GameState.GameOver)
+        {
+            trajectoryPredictor.ClearTrajectory();
+            return;
+        }
+
+        if (ballSpawner.CurrentBall == null)
+            return;
+
         if (Input.GetMouseButtonDown(0))
         {
             isAiming = true;
@@ -86,7 +98,7 @@ public class GameController : MonoBehaviour
                 Destroy(ballSpawner.CurrentBall, 10f);
                 ballSpawner.CurrentBall = null;
 
-                Invoke(nameof(SpawnNewBall), 1f);
+                Invoke(nameof(SpawnNewBall), timeToSpawnNextBall);
             }
         }
     }

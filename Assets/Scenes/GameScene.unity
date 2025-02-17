@@ -168,9 +168,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   ballPrefab: {fileID: 1287708882039334734, guid: fab3046de0b74f14e948370f915cb1ff, type: 3}
   spawnPoint: {fileID: 268311407}
-  maxBalls: 5
+  maxBalls: 10
   ballColor: 0
-  shootsText: {fileID: 4113158504907601952}
   ballLifeTime: 5
 --- !u!1 &356826477
 GameObject:
@@ -350,10 +349,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   launchPoint: {fileID: 268311407}
-  ballPrefab: {fileID: 4345920888021500054, guid: fa5d28eaa1570644bb083c7f6b0630d7, type: 3}
   maxForce: 40
   trajectoryPoints: 30
   timeStep: 0.05
+  timeToSpawnNextBall: 2
   ballSpawner: {fileID: 268311409}
   trajectoryPredictor: {fileID: 705688005}
 --- !u!114 &705688005
@@ -665,6 +664,63 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1001 &1181156576
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 7660303201693954962, guid: e731820cb860bf548897ba1a9d1d338b, type: 3}
+      propertyPath: m_Name
+      value: GameManager
+      objectReference: {fileID: 0}
+    - target: {fileID: 8209594366511122530, guid: e731820cb860bf548897ba1a9d1d338b, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8209594366511122530, guid: e731820cb860bf548897ba1a9d1d338b, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8209594366511122530, guid: e731820cb860bf548897ba1a9d1d338b, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8209594366511122530, guid: e731820cb860bf548897ba1a9d1d338b, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8209594366511122530, guid: e731820cb860bf548897ba1a9d1d338b, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8209594366511122530, guid: e731820cb860bf548897ba1a9d1d338b, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8209594366511122530, guid: e731820cb860bf548897ba1a9d1d338b, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8209594366511122530, guid: e731820cb860bf548897ba1a9d1d338b, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8209594366511122530, guid: e731820cb860bf548897ba1a9d1d338b, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8209594366511122530, guid: e731820cb860bf548897ba1a9d1d338b, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: e731820cb860bf548897ba1a9d1d338b, type: 3}
 --- !u!1 &1447756638
 GameObject:
   m_ObjectHideFlags: 0
@@ -831,7 +887,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 65282540027301e4b89584fda08d9302, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Speed: 20
+  Speed: 50
 --- !u!114 &1456736022
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -851,7 +907,7 @@ MonoBehaviour:
   ballPrefab: {fileID: 7965231883714765438, guid: 587ae9fdd0aa94542a7c79c0b08acc2c, type: 3}
   balls: []
   zoneColors: 000000000100000002000000030000000400000005000000
-  currentColors: 
+  currentBallColors: 
 --- !u!1 &1602967141
 GameObject:
   m_ObjectHideFlags: 0
@@ -1468,6 +1524,7 @@ MonoBehaviour:
   gameOverText: {fileID: 0}
   restartButton: {fileID: 4223860777302234336}
   backButton: {fileID: 962234035}
+  shotsRemainingText: {fileID: 4113158504907601952}
 --- !u!222 &6878879701492188549
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -1569,7 +1626,7 @@ GameObject:
   - component: {fileID: 6885180733099183432}
   - component: {fileID: 4113158504907601952}
   m_Layer: 5
-  m_Name: SphereCount
+  m_Name: RemainingShots
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1604,3 +1661,4 @@ SceneRoots:
   - {fileID: 1456736019}
   - {fileID: 705688002}
   - {fileID: 1447756641}
+  - {fileID: 1181156576}

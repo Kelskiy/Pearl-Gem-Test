@@ -5,9 +5,9 @@ using System.Collections.Generic;
 public class SpawnManager : Singleton<SpawnManager>
 {
     [Header("Planet settings")]
-    public int totalBalls = 500;        
-    public float planetRadius = 5f;        
-    public float ballScaleFactor = 0.2f;   
+    public int totalBalls = 500;
+    public float planetRadius = 5f;
+    public float ballScaleFactor = 0.2f;
     public int numberOfZones = 5;
 
     public BallContoller ballPrefab;
@@ -15,11 +15,10 @@ public class SpawnManager : Singleton<SpawnManager>
     public Dictionary<int, List<GameObject>> zoneDict = new Dictionary<int, List<GameObject>>();
 
     public List<BallContoller> balls = new List<BallContoller>();
-  
+
     public BallColor[] zoneColors;
 
-    [SerializeField]
-    private List<BallColor> currentColors = new List<BallColor>();
+    public List<BallColor> currentBallColors = new List<BallColor>();
 
     void Awake()
     {
@@ -27,7 +26,7 @@ public class SpawnManager : Singleton<SpawnManager>
         GeneratePlanet();
     }
 
-    
+
     void InitializeZoneColors()
     {
         BallColor[] availableColors = (BallColor[])Enum.GetValues(typeof(BallColor));
@@ -43,7 +42,7 @@ public class SpawnManager : Singleton<SpawnManager>
 
     void GeneratePlanet()
     {
-        float goldenAngle = Mathf.PI * (3 - Mathf.Sqrt(5)); 
+        float goldenAngle = Mathf.PI * (3 - Mathf.Sqrt(5));
         for (int i = 0; i < totalBalls; i++)
         {
             float y = 1 - (i / (float)(totalBalls - 1)) * 2;
@@ -95,22 +94,26 @@ public class SpawnManager : Singleton<SpawnManager>
 
     public void AddColor(BallColor color)
     {
-        if (currentColors.Contains(color))
+        if (currentBallColors.Contains(color))
             return;
 
-        currentColors.Add(color);
+        currentBallColors.Add(color);
     }
 
     private void RemoveColor(BallColor color)
     {
-        currentColors.Remove(color);
+        currentBallColors.Remove(color);
     }
 
     public BallColor GetRandomColor()
     {
-        int colorID = UnityEngine.Random.Range(0, currentColors.Count);
+        int colorID = 0;
 
-        return currentColors[colorID];
+        colorID = UnityEngine.Random.Range(0, currentBallColors.Count);
+
+        if (currentBallColors.Count > 0)
+            return currentBallColors[colorID];
+        else
+            return BallColor.None;
     }
-
 }

@@ -3,18 +3,12 @@ using UnityEngine;
 public class PlayerBall : MonoBehaviour
 {
     public BallColor ballColor { get; private set; }
-    private Renderer ballRenderer;
-
-    void Start()
-    {
-        ballRenderer = GetComponent<Renderer>();
-    }
+    public Renderer ballRenderer;
 
     public void SetBallColor(BallColor color)
     {
         ballColor = color;
-        if (ballRenderer == null)
-            ballRenderer = GetComponent<Renderer>();
+
         ballRenderer.material.color = GetColorFromEnum(color);
     }
 

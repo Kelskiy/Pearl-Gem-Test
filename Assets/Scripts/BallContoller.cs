@@ -52,6 +52,7 @@ public class BallContoller : MonoBehaviour
             case BallColor.Yellow: return Color.yellow;
             case BallColor.Cyan: return Color.cyan;
             case BallColor.Magenta: return Color.magenta;
+            case BallColor.None:
             default: return Color.white;
         }
     }

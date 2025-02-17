@@ -5,5 +5,7 @@ public enum BallColor
     Blue,
     Yellow,
     Cyan,
-    Magenta
+    Magenta,
+
+    None = 100
 }

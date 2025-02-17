@@ -9,6 +9,7 @@ public class SelfRotation : MonoBehaviour
 
     public void Update()
     {
-        transform.Rotate(Vector3.up, Speed * Time.deltaTime);
+        if (GameManager.Instance.currentState == GameState.Gameplay)
+            transform.Rotate(Vector3.up, Speed * Time.deltaTime);
     }
 }

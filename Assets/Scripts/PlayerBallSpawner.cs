@@ -11,7 +11,7 @@ public class PlayerBallSpawner : MonoBehaviour
 
     public BallColor ballColor;
 
-    public TextMeshProUGUI shootsText;
+
     public float ballLifeTime = 5f;
 
     private Rigidbody currentBallRb;
@@ -25,12 +25,26 @@ public class PlayerBallSpawner : MonoBehaviour
     private void Start()
     {
         currentBallCount = maxBalls;
-        UpdateUI();
+        GameUIManager.Instance.UpdateUI(currentBallCount);
         SpawnBall();
     }
 
     public void SpawnBall()
     {
+        //Player lost
+        if (currentBallCount == 0 && SpawnManager.Instance.currentBallColors.Count > 0)
+        {
+            GameManager.Instance.ChangedGameState(GameState.GameOver);
+            return;
+        }
+
+        //Player won
+        if (SpawnManager.Instance.currentBallColors.Count == 0)
+        {
+            GameManager.Instance.ChangedGameState(GameState.GameOver);
+            return;
+        }
+
         if (currentBall == null && currentBallCount > 0)
         {
             currentBall = Instantiate(ballPrefab, spawnPoint.position, Quaternion.identity);
@@ -46,19 +60,7 @@ public class PlayerBallSpawner : MonoBehaviour
             ballScript.SetBallColor(randomColor);
 
             currentBallCount--;
-            UpdateUI();
-        }
-    }
-
-    private void UpdateUI()
-    {
-        if (shootsText != null)
-        {
-            shootsText.text = "Shots: " + currentBallCount.ToString();
-        }
-        else
-        {
-            Debug.LogError("shotsText is NULL! Assign the UI text reference.");
+            GameUIManager.Instance.UpdateUI(currentBallCount);
         }
     }
 }
