@@ -19,14 +19,14 @@ public class SpawnManager : Singleton<SpawnManager>
 
     public List<BallColor> currentBallColors = new List<BallColor>();
 
-    void Awake()
+    private void Awake()
     {
         InitializeZoneColors();
         GeneratePlanet();
     }
 
 
-    void InitializeZoneColors()
+    private void InitializeZoneColors()
     {
         BallColor[] availableColors = (BallColor[])Enum.GetValues(typeof(BallColor));
         if (zoneColors == null || zoneColors.Length < numberOfZones)
@@ -39,7 +39,7 @@ public class SpawnManager : Singleton<SpawnManager>
         }
     }
 
-    void GeneratePlanet()
+    private void GeneratePlanet()
     {
         float goldenAngle = Mathf.PI * (3 - Mathf.Sqrt(5));
         for (int i = 0; i < totalBalls; i++)

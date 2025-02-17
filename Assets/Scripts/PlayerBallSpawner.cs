@@ -5,11 +5,13 @@ public class PlayerBallSpawner : MonoBehaviour
 {
     public GameObject ballPrefab;
     public Transform spawnPoint;
-    public int maxBalls = 5;
-    private int currentBallCount;
     private GameObject currentBall;
 
+    public int maxBalls = 5;
+
     private Rigidbody currentBallRb;
+
+    private int currentBallCount;
 
     public GameObject CurrentBall
     {
@@ -58,7 +60,7 @@ public class PlayerBallSpawner : MonoBehaviour
         }
     }
 
-    public void ShootBall()
+    public void OnBallShot()
     {
         currentBallCount--;
         GameUIManager.Instance.UpdateUI(currentBallCount);

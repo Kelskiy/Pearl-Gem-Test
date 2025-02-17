@@ -16,7 +16,7 @@ public class GameUIManager : Singleton<GameUIManager>
 
     public TextMeshProUGUI shotsRemainingText;
 
-    void Start()
+    private void Start()
     {
         restartButton.onClick.AddListener(RestartButton);
         backButton.onClick.AddListener(BackButtonClick);
@@ -48,6 +48,7 @@ public class GameUIManager : Singleton<GameUIManager>
         gameOverTextHolder.SetActive(true);
 
         gameOverText.text = "You lose!";
+        gameOverText.color = Color.red;
     }
 
     public void WinGame()
@@ -55,6 +56,7 @@ public class GameUIManager : Singleton<GameUIManager>
         gameOverTextHolder.SetActive(true);
 
         gameOverText.text = "You win!";
+        gameOverText.color = Color.green;
     }
 
 }

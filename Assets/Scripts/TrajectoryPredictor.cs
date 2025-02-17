@@ -9,7 +9,7 @@ public class TrajectoryPredictor : MonoBehaviour
 
     public float timeStep = 0.1f;  
 
-    void Awake()
+    private void Awake()
     {
         lineRenderer = GetComponent<LineRenderer>();
         if (lineRenderer == null)

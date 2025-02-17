@@ -18,7 +18,7 @@ public class GameController : MonoBehaviour
     private float currentAngleHorizontal = 0f;
     private float currentForce = 10f;
 
-    void Start()
+    private void Start()
     {
         lineRenderer = GetComponent<LineRenderer>();
         trajectoryPredictor = GetComponent<TrajectoryPredictor>();
@@ -35,7 +35,7 @@ public class GameController : MonoBehaviour
         GameManager.Instance.ChangedGameState(GameState.Gameplay);
     }
 
-    void Update()
+    private void Update()
     {
         if (GameManager.Instance.currentState == GameState.WaitingForStart || GameManager.Instance.currentState == GameState.GameOver)
         {
@@ -79,7 +79,7 @@ public class GameController : MonoBehaviour
         }
     }
 
-    void LaunchBall()
+    private void LaunchBall()
     {
         if (ballSpawner != null && ballSpawner.CurrentBall != null)
         {
@@ -99,12 +99,12 @@ public class GameController : MonoBehaviour
 
                 Invoke(nameof(SpawnNewBall), timeToSpawnNextBall);
 
-                ballSpawner.ShootBall();
+                ballSpawner.OnBallShot();
             }
         }
     }
 
-    void SpawnNewBall()
+    private void SpawnNewBall()
     {
         ballSpawner.SpawnBall();
     }

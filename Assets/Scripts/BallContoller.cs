@@ -3,11 +3,11 @@ using UnityEngine;
 public class BallContoller : MonoBehaviour
 {
     public BallColor ballColor;
-    private Renderer ballRenderer;
-
     public int segmentID { get; private set; }
 
-    void Start()
+    private Renderer ballRenderer;
+
+    private void Start()
     {
         ballRenderer = GetComponent<Renderer>();
     }
